@@ -1,0 +1,39 @@
+<!-- app/views/static_pages/list.html.erb -->
+<h1>Static Pages List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Published</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody >
+    <% @static_pages.each do |static_page| %>
+      <tr data-controller="toggle-publish" data-toggle-publish-id="<%= static_page.id %>">
+        <td><%= static_page.title %></td>
+        <td id="publishStatus-<%=static_page.id%>" data-toggle-publish-target="publishStatus"><%= static_page.published ? 'Yes' : 'No' %></td>
+        <td>
+          <%= check_box_tag "published_#{static_page.id}", 'published', static_page.published, data: {target: 'toggle-publish.checkbox', action: 'change->toggle-publish#togglePublish'} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', songs_path %>
+
+<!-- <script>
+  function togglePublish(id) {
+    fetch('/toggle_publish/' + id, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      }
+    }).then(response => response.json())
+      .then(data => console.log('Status:', data.status));
+  }
+</script> -->
+
+, 
+                <!-- onchange: "togglePublish(#{static_page.id})" -->

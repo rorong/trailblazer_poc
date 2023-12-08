@@ -1,0 +1,7 @@
+<!-- app/cells/song_cell/index.erb -->
+<% model.each do |song| %>
+  <div class="song">
+    <h3><%= song.title %></h3>
+    <p>Artist: <%= song.artist %></p>
+  </div>
+<% end %>

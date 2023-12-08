@@ -1,0 +1,45 @@
+<!-- app/views/songs/index.html.erb -->
+<div style="text-align: center; display: flex; justify-content: center;">
+  <div>
+    <h1>Songs</h1>
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Artist</th>
+          <th colspan="2"></th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @songs.each do |song| %>
+          <tr>
+            <td><%= song.title %></td>
+            <td><%= song.artist %></td>
+            <td><%= link_to 'Show', song %></td>
+            <td><%= link_to 'Edit', edit_song_path(song) %></td>
+            <td><%= button_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to 'New Song', new_song_path %>
+  </div>
+</div>
+<div>
+<%= link_to 'New Static Page', new_static_page_path, class: 'btn btn-primary' %>
+<%= link_to 'Static Pages List', static_pages_list_path, class: 'btn btn-primary' %>
+</div>
+<div>
+<h2>Pages list</h2>
+  <% StaticPage.where(published: true).each do |static_page| %>
+    <div class="card-container">
+      <div class="card">
+        <%= cell(StaticPageCell, static_page).() %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+ 

@@ -1,0 +1,21 @@
+#body{
+    background-color: powderblue;
+}
+
+.card {
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    padding: 20px;
+    width: calc(25% - 20px); /* Adjust the width as per your preference */
+    box-sizing: border-box;
+    margin-right: 20px; /* Adjust the margin to create space between cards */
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: flex-start; /* Change to 'flex-start' to display cards horizontally */
+    flex-wrap: wrap;
+    margin: 20px -10px; /* Negative margin to offset the margin on the cards */
+}
